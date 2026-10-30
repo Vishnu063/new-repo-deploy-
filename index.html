@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101828" />
+  <meta name="description" content="LaunchBoard — your personal workspace for staying focused and getting things done." />
+  <title>LaunchBoard — Make today count</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="LaunchBoard home"><span class="brand-icon">✦</span> LaunchBoard<span class="brand-dot">.</span></a>
+      <p class="side-label">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <a class="nav-link active" href="#home" data-view="home"><span>◫</span> Overview</a>
+        <a class="nav-link" href="#tasks" data-view="tasks"><span>☑</span> My tasks</a>
+        <a class="nav-link" href="#about" data-view="about"><span>◎</span> About</a>
+      </nav>
+      <div class="side-tip"><span class="tip-emoji">⚡</span><strong>A little progress adds up.</strong><p>Plan your next move, then make it happen.</p></div>
+      <div class="side-bottom"><span class="avatar">Y</span><div><strong>Your workspace</strong><small>Personal dashboard</small></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div class="top-left"><button id="menuBtn" class="icon-button menu-button" aria-label="Toggle menu" aria-expanded="false">☰</button><span class="breadcrumb">Workspace <span>/</span> <b id="breadcrumb">Overview</b></span></div><div class="top-right"><span id="todayDate" class="today"></span><span class="online-tag"><span class="online-dot"></span> All systems go</span></div></header>
+      <section class="view" id="homeView">
+        <div class="hero"><div class="hero-copy"><span class="eyebrow">✦ YOUR DAILY RESET</span><h1>Make today<br /><em>count.</em></h1><p>Your ideas deserve action. Keep everything organized, celebrate the small wins, and keep moving forward.</p><button class="primary-button" id="heroAdd">+ Add a new task <span>↗</span></button></div><div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="floating-card fc-one"><span>✧</span><div><b>Stay focused</b><small>One thing at a time</small></div></div><div class="floating-card fc-two"><span>✓</span><div><b>Progress unlocked</b><small>Keep your momentum</small></div></div><div class="hero-star">✳</div></div></div>
+        <div class="section-header"><div><span class="eyebrow dark">AT A GLANCE</span><h2>Your productivity snapshot</h2></div><span class="subtle">Updates as you work</span></div>
+        <div class="stats"><article class="stat-card"><div class="stat-top"><span>All tasks</span><span class="stat-icon purple">▤</span></div><strong id="statTotal">0</strong><small>On your board</small></article><article class="stat-card"><div class="stat-top"><span>Completed</span><span class="stat-icon green">✓</span></div><strong id="statDone">0</strong><small>Wins worth celebrating</small></article><article class="stat-card"><div class="stat-top"><span>In progress</span><span class="stat-icon orange">↗</span></div><strong id="statPending">0</strong><small>Things to move forward</small></article></div>
+        <section class="tasks-panel"><div class="panel-heading"><div><span class="eyebrow dark">YOUR FOCUS</span><h2>Things to get done</h2></div><button class="outline-button" id="homeSeeAll">View all tasks ↗</button></div><div id="homeTaskList" class="task-list"></div></section>
+      </section>
+      <section class="view hidden" id="tasksView"><div class="page-heading"><span class="eyebrow dark">GET IT DONE</span><h1>My tasks<span class="accent">.</span></h1><p>A clear mind starts with a clear list.</p></div><div class="tasks-panel tasks-page"><div class="panel-heading"><div><h2>Everything on your plate</h2><p id="taskCountLabel">Track your progress</p></div><button class="primary-button small" id="pageAdd">+ New task</button></div><div class="filters" role="group" aria-label="Filter tasks"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="active">In progress</button><button class="filter" data-filter="done">Completed</button></div><div id="allTaskList" class="task-list"></div></div></section>
+      <section class="view hidden" id="aboutView"><div class="page-heading"><span class="eyebrow dark">THE IDEA</span><h1>Small steps.<br /><span class="accent">Big things.</span></h1><p>LaunchBoard is a simple space to organize your day.</p></div><div class="about-card"><div class="about-symbol">✦</div><h2>Built for momentum.</h2><p>Add tasks, mark them complete, and watch your progress grow. Your changes are saved in your browser, so your list stays with you on this device.</p><button class="primary-button" id="aboutStart">Go to my tasks ↗</button></div></section>
+      <footer>© <span id="year"></span> LaunchBoard · Made for getting things done.</footer>
+    </main>
+  </div>
+  <dialog id="taskDialog" aria-labelledby="dialogTitle"><form method="dialog" id="taskForm"><div class="dialog-top"><div><span class="eyebrow dark">A FRESH START</span><h2 id="dialogTitle">Add a task</h2></div><button type="button" class="close-button" id="closeDialog" aria-label="Close">×</button></div><label for="taskTitle">What do you want to get done?</label><input id="taskTitle" name="title" placeholder="e.g. Finish my new project" maxlength="100" required /><label for="taskCategory">Category</label><select id="taskCategory" name="category"><option value="Personal">Personal</option><option value="Work">Work</option><option value="Learning">Learning</option></select><div class="dialog-actions"><button type="button" class="outline-button" id="cancelDialog">Cancel</button><button type="submit" class="primary-button small">Create task ↗</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
