@@ -71,7 +71,7 @@ pipeline {
                         set -eu
                         git fetch origin main
                         git checkout -B gitops-update origin/main
-                        sed -i "s/^  tag: .*/  tag: \"$BUILD_NUMBER\"/" helm/launchboard/values.yaml
+                        sed -i "s/^  tag: .*/  tag: '$BUILD_NUMBER'/" helm/launchboard/values.yaml
                         if git diff --quiet -- helm/launchboard/values.yaml; then
                             echo "Helm image tag already matches build number."
                             exit 0
