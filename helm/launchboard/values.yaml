@@ -3,7 +3,7 @@ replicaCount: 3
 image:
   repository: vishnu063/launchboard
   pullPolicy: IfNotPresent
-  tag: "1"
+  tag: '2'
 
 imagePullSecrets: []
 
